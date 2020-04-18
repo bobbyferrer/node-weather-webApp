@@ -9,10 +9,12 @@ const forecast = (longitude, latitude, callback) => {
 		} else if (body.error) {
 			callback('Unable to find location', undefined);
 		} else {
+			console.log(body.daily.data[0]);
 			callback(
 				undefined,
 				`${body.daily.data[0].summary} It is currently ${body.currently
-					.temperature} degress out. There is ${body.currently.precipProbability}% change of rain`
+					.temperature} degress out, Huminidy of ${body.currently.humidity} and has a wind speed of ${body
+					.currently.windSpeed} . There is ${body.currently.precipProbability}% change of rain`
 			);
 		}
 	});
